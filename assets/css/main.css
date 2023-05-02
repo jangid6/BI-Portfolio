@@ -3895,23 +3895,6 @@ input, select, textarea {
 				margin: 0;
 		   }
 	   }
-
-	   .inlineList {
-		display: flex;
-		flex-direction: row;
-		/* Below sets up your display method, ex: flex-start|flex-end|space-between|space-around */
-		justify-content: flex-start; 
-		/* Below removes bullets and cleans white-space */
-		list-style: none;
-		padding: 0;
-		/* Bonus: forces no word-wrap */
-		white-space: nowrap;
-	  }
-	  /* Here, I got you started.
-	  li {
-		padding: 50px;
-	  }
-	  */
 	
 	/* Social Profile handles --starts */
 
