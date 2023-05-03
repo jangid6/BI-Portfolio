@@ -3829,8 +3829,8 @@ input, select, textarea {
 		}
 
 			#nav ul.links li {
-				display: block;
-				padding-left: 0;
+				display: inline;
+				padding: 10;
 			}
 
 				#nav ul.links li a {
@@ -3839,7 +3839,7 @@ input, select, textarea {
 					-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 					transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 					display: block;
-					font-size: 0.8rem;
+					font-size: 1rem;
 					outline: none;
 					padding: 0 2rem;
 				}
@@ -3849,12 +3849,12 @@ input, select, textarea {
 						background-color: rgba(255, 255, 255, 0.1);
 					}
 
-				#nav ul.links li.active {
+				/* #nav ul.links li.active {
 					background-color: #ffffff;
-				}
+				} */
 
 					#nav ul.links li.active a {
-						color: #1e252d;
+						color: #fcfcfc;
 					}
 
 						#nav ul.links li.active a:hover {
