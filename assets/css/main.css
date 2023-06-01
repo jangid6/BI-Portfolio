@@ -4766,7 +4766,7 @@ input, select, textarea {
 	}
 
 /* Nav Panel */
-
+	/* Menu Chnage CSS Settings */
 	#navPanelToggle {
 		text-decoration: none;
 		-moz-transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -4780,7 +4780,7 @@ input, select, textarea {
 		border: 0;
 		color: #ffffff;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
-		font-size: 1.2rem;
+		font-size: 1.6rem;
 		font-weight: 900;
 		letter-spacing: 0.075em;
 		padding: 0.375rem 1.25rem;
@@ -4827,7 +4827,7 @@ input, select, textarea {
 		@media screen and (max-width: 736px) {
 
 			#navPanelToggle {
-				font-size: 1.4rem;
+				font-size: 1.6rem;
 				padding: 0.25rem 1rem;
 			}
 
