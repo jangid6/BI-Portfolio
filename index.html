@@ -80,24 +80,116 @@
 						</div> -->
 					<!-- Featured Post -->
 						<article class="post featured" style="padding-top: 2%;padding-bottom: 2%">
-							<header class="major">
-								<!-- <span class="date">April 25, 2017</span> -->
-								<h2><a href="#" style="pointer-events: none">Analytics Portfolio<br /> </a></h2>
-								<h3><a href="#" style="pointer-events: none">AZURE SQL DWH INTEGRATED WITH Microsoft Power BI<br /> </a></h3>
+							<!-- <header class="major">
+								<h2>Analytics Work Samples</h2>
+							</header> -->
+							<div style="text-align: center;">
+								
+							<projects style="padding: 10%;">
+								<div style="font-size: 40px; font-weight: bold;"> 
+									Modern Business Intelligence (BI) Architecture - Azure Synapse Analytics
+								</div>
+								<img style="padding-top: 0%" src="images/pic01.jpg"  style="max-width: 100%; height: auto;" alt="" />
+								<div style="margin: 10px; padding: 10px; background-color: #f5f5f5;">
+									<h2>Aim & Objective</h2>
+									<p>
+										<strong>In this project we deploy famous  
+										<a style="color: blue;font-weight: bold;" target="_blank" href="https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms">
+											Microsoft Adventure Works 2019 data
+										</a>
+										on Azure SQL Cloud Database using Azure Data Studio.
+										</strong>
+									</p>
+									<p><strong>Aim:</strong> To Create a Business Report using Azure BI Architecture</p>
+									<p><strong>Objective:</strong> Derive and Explain Key Business Metrics including Sales, Revenue, and COGS.</p>
+									<p><strong>Efforts: Define Metrics and create SQL Custom Queries</strong></p>
+									 <!-- Section 5: SQL Queries -->
+									<div style="text-align: center;">
+										<h2 class="collapsible">Click to Expand for SQL Query</h2>
+										<div class="content">
+											<pre class="sql-queries">
+												CREATE   view [dbo].[factview] AS (
+													SELECT
+														MyOrders.SalesOrderNumber,
+														DENSE_RANK() OVER(PARTITION BY cust.CustomerKey order by MyOrders.SalesOrderNumber asc) as CustOrderRank,
+														ROW_NUMBER() OVER(PARTITION BY cust.CustomerKey order by MyOrders.SalesOrderNumber asc) as CRankOrderWise,
+														CAST(MyOrders.CustomerKey AS INT) as CustKey,
+														Product.EnglishProductName as ProductName,
+														ProductSubCat.EnglishProductSubcategoryName as ProductSubcategoryName,
+														ProductCat.EnglishProductCategoryName as ProductcategoryName,
+														CAST(MyOrders.OrderQuantity AS INT) as OrderQuantity,
+														ROUND(CAST(MyOrders.SalesAmount AS INT),2) as SalesAmount,
+														ROUND(CAST((MyOrders.SalesAmount -  MyOrders.TotalProductCost) AS INT),2) as Margin,
+														CONVERT(DATE, MyOrders.OrderDate) as OrderDate,
+														FORMAT(OrderDate,'MMM') as MonthName,
+														CONCAT('Q',Datepart(quarter,OrderDate)) as OrderQuarter,
+														Datepart(quarter,OrderDate) as WeekNo,
+														YEAR(OrderDate) as OrderYear,
+														CONCAT(YEAR(OrderDate),'-',CONCAT('Q',Datepart(quarter,OrderDate))) as YYQQ,
+														CONCAT(cust.FirstName,' ',cust.LastName) as CustomerName,
+														cust.Gender as Gender,
+														CONVERT(DATE, cust.Birthdate) as BirthDate,
+														CONVERT(DATE, mindate.DFP) as DateFirstPurchase,
+														FORMAT(DateFirstPurchase,'MMM') as CohortMonth,
+														Year(mindate.DFP) as CohortYear,
+														CONCAT(Year(mindate.DFP),'-',FORMAT(mindate.DFP,'MM'),'-',FORMAT(mindate.DFP,'MMM')) as CohortYYMM,
+														CONCAT(YEAR(OrderDate),'-',FORMAT(OrderDate,'MM'),'-',FORMAT(OrderDate,'MMM')) as OrderYYMM,
+														CONCAT(Year(CONVERT(Date,DATEADD(month, -1, OrderDate))),'-',FORMAT(CONVERT(Date,DATEADD(month, -1, OrderDate)),'MM'),'-',FORMAT(CONVERT(Date,DATEADD(month, -1, OrderDate)),'MMM')) as M1CohortYYMM,
+														YEAR(GETDATE()) - YEAR(CAST(cust.Birthdate AS DATE)) as AGE,
+														ROUND(CAST(cust.YearlyIncome AS INT),2) as YearlyIncome,
+														CASE
+															WHEN ROUND(CAST(cust.YearlyIncome AS INT),2) <= 40000 THEN 'LOW INCOME'
+															WHEN ROUND(CAST(cust.YearlyIncome AS INT),2) <= 60000 THEN 'MODERATE INCOME'
+															ELSE 'HIGH INCOME'
+														END AS IncomeCategory,
+														Geo.City as CustomerCity,
+														SalesTerrority.SalesTerritoryCountry as SalesCountry,
+														SalesTerrority.SalesTerritoryGroup as SalesRegion 
+													FROM (
+															SELECT *
+															FROM [AdventureWorksDW2019].[dbo].[FactInternetSales] 
+															where YEAR(OrderDate) >= 2013
+														) as MyOrders
+													LEFT JOIN (SELECT 
+														DISTINCT [CustomerKey],
+														min(OrderDate) as DFP
+														FROM [AdventureWorksDW2019].[dbo].[FactInternetSales]
+														where YEAR(OrderDate) >= 2013
+														GROUP BY [CustomerKey]
+													) mindate
+													ON MyOrders.CustomerKey  = mindate.CustomerKey
+													LEFT JOIN [dbo].[DimCustomer] Cust
+													ON MyOrders.CustomerKey  = Cust.CustomerKey
+													LEFT JOIN [dbo].[DimProduct] Product
+													ON MyOrders.ProductKey  = Product.ProductKey
+													LEFT JOIN [dbo].[DimProductSubcategory] ProductSubCat
+													ON Product.ProductSubcategoryKey  = ProductSubCat.ProductSubcategoryKey
+													LEFT JOIN [dbo].[DimProductCategory] ProductCat
+													ON ProductSubCat.ProductCategoryKey  = ProductCat.ProductCategoryKey
+													LEFT JOIN [dbo].DimSalesTerritory SalesTerrority
+													ON (MyOrders.SalesTerritoryKey = SalesTerrority.SalesTerritoryKey)
+													LEFT JOIN [dbo].DimGeography Geo
+													ON (Cust.GeographyKey = Geo.GeographyKey)
+												)
+											</pre>
+										</div>
+										<h3 >
+											-- <a style="color: blue;text-align: left;"target="new" href="https://github.com/jangid6/CustomerSegmentationBigData/blob/main/Custom-SQL-Queries/CreatingFactView.sql"> SQL GITHUB REPO</a>
+										</h3>
+									</div>
 
-								<p>
-									In this project we deploy famous  
-									<a style="color: blue;font-weight: bold;" target="_blank" href="https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver16&tabs=ssms">
-										Microsoft Adventure Works 2019 DWH
+								</div>
+								<a target="_blank" href="https://app.powerbi.com/view?r=eyJrIjoiYzJmOWEwNzktOTFmZi00ZmE1LTgxZmMtNGM5Y2MwODI2MjFmIiwidCI6ImVkYjljNTM4LWZlNjYtNGE2OC04YzEwLTc2ZmNhODg4NzQxZCJ9&pageName=ReportSection">
+									<a  target="_blank" href="https://app.powerbi.com/view?r=eyJrIjoiYzJmOWEwNzktOTFmZi00ZmE1LTgxZmMtNGM5Y2MwODI2MjFmIiwidCI6ImVkYjljNTM4LWZlNjYtNGE2OC04YzEwLTc2ZmNhODg4NzQxZCJ9&pageName=ReportSection">
+										<h3 style="color: blue;font-weight: bold;">
+											Deployed Power BI Sales Dashboard & Retention Report
+										</h3>
 									</a>
-									on Azure SQL Storage and create SQL Views & Integrate with Power BI to create complelling Business Reports & Dashboard.
-								</p>
-							</header>
+								<div class="powerbi-iframe-container">
+									<iframe width="100%" height=450 title="Microsoft-AdventureWorks-BI & Analytics" src="https://app.powerbi.com/view?r=eyJrIjoiYzJmOWEwNzktOTFmZi00ZmE1LTgxZmMtNGM5Y2MwODI2MjFmIiwidCI6ImVkYjljNTM4LWZlNjYtNGE2OC04YzEwLTc2ZmNhODg4NzQxZCJ9" frameborder="1" allowFullScreen="true"></iframe>
+								</div>
+							</projects>
 							
-							<!-- <a target="_blank" href="https://app.powerbi.com/view?r=eyJrIjoiYzJmOWEwNzktOTFmZi00ZmE1LTgxZmMtNGM5Y2MwODI2MjFmIiwidCI6ImVkYjljNTM4LWZlNjYtNGE2OC04YzEwLTc2ZmNhODg4NzQxZCJ9&pageName=ReportSection" class="image main"><img src="images/pic01.jpg" alt="" /></a> -->
-							<!-- <a target="_blank" href="https://app.powerbi.com/view?r=eyJrIjoiYzJmOWEwNzktOTFmZi00ZmE1LTgxZmMtNGM5Y2MwODI2MjFmIiwidCI6ImVkYjljNTM4LWZlNjYtNGE2OC04YzEwLTc2ZmNhODg4NzQxZCJ9&pageName=ReportSection">
-							</a> -->
-							<iframe title="Microsoft-AdventureWorks-BI & Analytics" width="100%" max-width="100%" height="250" src="https://app.powerbi.com/view?r=eyJrIjoiYzJmOWEwNzktOTFmZi00ZmE1LTgxZmMtNGM5Y2MwODI2MjFmIiwidCI6ImVkYjljNTM4LWZlNjYtNGE2OC04YzEwLTc2ZmNhODg4NzQxZCJ9" frameborder="5" allowFullScreen="true"></iframe>
 							<ul class="actions special">
 								<!-- <li>
 									<a target="_blank" href="https://app.powerbi.com/view?r=eyJrIjoiYzJmOWEwNzktOTFmZi00ZmE1LTgxZmMtNGM5Y2MwODI2MjFmIiwidCI6ImVkYjljNTM4LWZlNjYtNGE2OC04YzEwLTc2ZmNhODg4NzQxZCJ9&pageName=ReportSection" 
@@ -250,7 +342,7 @@
 
 						<div class="container" style="padding-top: 2%;padding-bottom: 2%">
 							<header class="major">
-									<h1><a href="#" style="pointer-events: none">CAREER TIMELINE<br /> </a></h1>
+									<h1><a href="#" style="pointer-events: none">professional Tenure<br /> </a></h1>
 							</header>
 							<div class="row">
 								<div class="col-md-12">
@@ -259,8 +351,8 @@
 											<a href="https://www.timesclub.co/" target="_blank" class="timeline-content">
 												<div class="timeline-year">2022</div>
 												<div class="timeline-icon"><i class="fa fa-globe"></i></div>
-												<h2 class="title">SR. BUSINESS ANALYST - NEOBANK</h2>
-												<h5>- Timesclub (Fintech Startup IN USA)</h5>
+												<h2 class="title">SR. BUSINESS ANALYST - Fintech</h2>
+												<h5>- Abound By Times of India (NeoBank SuperApp IN USA)</h5>
 												<p class="description">	
 											
 													Fintech exposure of digital products and mananged end-to-end Analytics & Insights on million of transactional data.  
@@ -459,6 +551,21 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script>
+				// JavaScript for collapsible section
+				const collapsibles = document.querySelectorAll(".collapsible");
+				collapsibles.forEach(collapsible => {
+					collapsible.addEventListener("click", function() {
+						this.classList.toggle("active");
+						const content = this.nextElementSibling;
+						if (content.style.display === "block") {
+							content.style.display = "none";
+						} else {
+							content.style.display = "block";
+						}
+					});
+				});
+			</script>
 
 	</body>
 </html>

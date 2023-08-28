@@ -323,8 +323,6 @@ input, select, textarea {
 		border-bottom-color: #eeeeee;
 	}
 
-	
-
 /* Row */
 
 	.row {
@@ -4954,6 +4952,49 @@ input, select, textarea {
 			}
 
 		}
+
+	.powerbi-iframe-container {
+		position: relative;
+		overflow: hidden;
+		padding-top: 56.25%; /* 16:9 aspect ratio (for responsive height) */
+		border: 4px solid black;
+	}
+
+	.powerbi-iframe-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	 /* Collapsible section styling */
+	 .collapsible {
+		cursor: pointer;
+		border: none;
+		text-align: left;
+		color: orangered;
+		outline: none;
+		font-size: 18px;
+		background-color: transparent;
+	}
+
+	.content {
+		display: relative;
+		padding: 20px;
+		border-top: 1px solid #ccc;
+	}
+
+	/* Styling for SQL queries */
+	.sql-queries {
+		white-space: pre-line;
+		text-align: left;
+		font-size: 14px; /* Adjust the font size */
+		line-height: 1; /* Remove gaps between lines */
+	}
+
+
+	
 
 	@media screen and (max-width: 980px) {
 
