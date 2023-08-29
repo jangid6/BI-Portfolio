@@ -329,6 +329,11 @@ input, select, textarea {
 		border-bottom-color: #eeeeee;
 	}
 
+	.powerbi-iframe-container {
+		height: 450px;
+		width: 100%;
+	}
+
 /* Row */
 
 	.row {
@@ -1303,6 +1308,11 @@ input, select, textarea {
 
 						.row.gtr-200.gtr-uniform > * {
 							padding-top: 3rem;
+						}
+					
+						.powerbi-iframe-container {
+							height: 200px;
+							width: 100%;
 						}
 
 		}
