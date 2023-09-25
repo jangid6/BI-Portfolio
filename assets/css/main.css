@@ -330,7 +330,7 @@ input, select, textarea {
 	}
 
 	.powerbi-iframe-container {
-		height: 450px;
+		height: 650px;
 		width: 100%;
 	}
 
@@ -1068,6 +1068,25 @@ input, select, textarea {
 		}
 
 		@media screen and (max-width: 980px) {
+
+			div.mydivider h1,h2 {
+				font-size: 1em; /* Set the font size to the same size as an h6 */
+				text-align: center;
+			}
+
+			p, li , div.main h1, h2 {
+				font-size: 1em; /* Set the font size to the same size as an h6 */
+				text-align: left;
+			  }
+			
+			section.post.container h1,h2 {
+				font-size: 1em; /* Set the font size to the same size as an h6 */
+				text-align: center;
+			}
+
+			div.container {
+				display: none;
+			  }
 
 			.row {
 				display: flex;
