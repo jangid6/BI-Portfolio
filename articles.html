@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Data Warehousing Fundamentals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            /* overflow: hidden; */
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0779e4 3px solid;
+        }
+        header h1 {
+            text-align: center;
+            text-transform: uppercase;
+            margin: 0;
+            font-size: 24px;
+        }
+        article {
+            padding: 20px;
+            background: #ffffff0b;
+            margin-top: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            /* margin: 10px 0; */
+            color: #555;
+        }
+        /* ul {
+            margin: 10px 0;
+            padding-left: 20px;
+            color: #555;
+        }
+        li {
+            margin-bottom: 10px;
+        } */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Learn Data Warehousing Fundamentals</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <article>
+            <h2>Introduction</h2>
+            <p>This 5-minute read will introduce you to the fundamentals of data warehousing, covering key concepts like the difference between a database, data warehouse, data mart, and data lake, OLAP vs. OLTP, ETL vs. ELT processes, the layers of a data warehouse, and the basics of dimensional modeling.</p>
+
+            <h2>Difference between Database, Data Warehouse, Data Mart, Data Lake</h2>
+            <p>A <strong>Database</strong> is like a digital filing cabinet, storing organized data for specific tasks, like managing customer orders. A <strong>Data Warehouse</strong> is a larger storage system designed to hold data from multiple sources, structured for analysis. A <strong>Data Mart</strong> is a focused version of a data warehouse, serving specific business functions. A <strong>Data Lake</strong> is a vast storage space for raw data, both structured and unstructured, awaiting further processing.</p>
+
+            <h2>What is OLAP and OLTP?</h2>
+            <p><strong>OLTP (Online Transaction Processing)</strong> manages everyday operations like processing transactions quickly and efficiently. <strong>OLAP (Online Analytical Processing)</strong> helps in analyzing large volumes of data to identify trends and patterns, supporting decision-making.</p>
+
+            <h2>ETL and ELT Processes</h2>
+            <p>The <strong>ETL process</strong> involves Extracting data from sources, Transforming it to meet specific standards, and Loading it into a data warehouse. The <strong>ELT process</strong> is similar, but the data is Loaded first and Transformed afterward, often used when dealing with large datasets.</p>
+
+            <h2>Various Layers of a Data Warehouse</h2>
+            <ul>
+                <li><strong>Staging Layer:</strong> Temporary storage for raw data from different sources.</li>
+                <li><strong>Data Integration/Transformation Layer:</strong> Data is cleaned and organized here.</li>
+                <li><strong>Data Storage Layer:</strong> The final, structured home for the transformed data.</li>
+                <li><strong>Data Access/Presentation Layer:</strong> The interface where users access and analyze the data.</li>
+            </ul>
+
+            <h2>Dimensional Modeling: Fact and Dimension Tables, Star Schema, and Snowflake Schema</h2>
+            <p><strong>Dimensional Modeling</strong> structures data to make it easy to access. <strong>Fact Tables</strong> store measurable data, like sales figures. <strong>Dimension Tables</strong> store descriptive data, like product names. In a <strong>Star Schema</strong>, the fact table is central, surrounded by dimension tables. A <strong>Snowflake Schema</strong> is a more complex version where dimension tables are further normalized.</p>
+        </article>
+    </div>
+
+    <footer>
+        <div>&copy; 2024 Your Name | Learn Data Warehousing Fundamentals</div>
+    </footer>
+</body>
+</html>
